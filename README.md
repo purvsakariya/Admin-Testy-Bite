@@ -1,52 +1,186 @@
-# Food Order Project
+# 🍽️ Food Order Admin Panel
 
--Tasty Bite is a full-stack food ordering web application built using the MERN stack. Users can browse food items, add products to cart, create orders, and securely authenticate using JWT authentication.
--This project was created to improve my full-stack development skills using React, Express.js, MongoDB, and REST APIs.
+> Admin dashboard to manage the [Food Order App](https://github.com/your-username/food-order-app) — built for restaurant owners and administrators to oversee users, orders, and menu items in one place.
 
-## 🚀 Features
+---
 
-### User Features
-- User Signup & Login Authentication
-- JWT-based Authentication
-- Browse Food Items
-- Add to Cart Functionality
-- Order Placement System
-- Responsive User Interface
-- Secure Password Hashing with Bcrypt
+## 📌 About
 
-### Admin/Backend Features
-- REST API with Express.js
-- MongoDB Database Integration
-- Image Upload using Cloudinary
-- Cookie-based Authentication
-- Middleware-based Route Protection
-- API Logging using Morgan
+This is the **admin side** of the Food Order project. While the user-facing app lets customers browse the menu and place orders, this panel gives admins full control — including exclusive permissions like deleting users and removing any order from the system.
 
-## Technologies Used
+---
 
-### Frontend
-- **React** with **Vite**
-- **React Router** for routing
-- **useReducer** / **ContextApi** for State Management
+## ✨ Features
 
-### Backend
-- **Node.js** with **Express**
-- **MongoDB** with **Mongoose**
-- **JWT** (JSON Web Tokens) for authentication
-- **Bcrypt** for password hashing
-- **Cloudinary** for image uploads
-- **Morgan** for logging
+### 👤 User Management (Admin Only)
+- View all registered users
+- See each user's order count, join date, and account status
+- **Delete any user** and their associated order history
 
-## Project Structure
+### 📦 Order Management
+- View all orders across all users
+- Filter orders by status: Pending, Preparing, Delivered, Cancelled
+- Update order status
+- **Delete any order** (admin exclusive)
 
-- `frontend/` - Contains the React Vite application
-- `backend/` - Contains the Node.js Express API
+### 🍕 Menu Management
+- View all menu items
+- Add new food items
+- Edit item details (name, price, category, availability)
+- Delete menu items
 
-## Getting Started
+### 📊 Dashboard Overview
+- Total orders count
+- Registered users count
+- Pending orders that need action
+- Revenue summary
+
+---
+
+## 🔐 Admin vs User — Access Comparison
+
+| Feature | User | Admin |
+|---|---|---|
+| Browse menu | ✅ | ✅ |
+| Place orders | ✅ | ✅ |
+| View own orders | ✅ | ✅ |
+| View all users' orders | ❌ | ✅ |
+| Delete own orders | ❌ | ✅ |
+| Delete any user's orders | ❌ | ✅ |
+| Delete users | ❌ | ✅ |
+| Manage menu items | ❌ | ✅ |
+| View dashboard stats | ❌ | ✅ |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React.js |
+| Styling | Tailwind CSS |
+| Backend | Node.js + Express.js |
+| Database | MongoDB |
+| Auth | JWT (JSON Web Tokens) |
+| Role Guard | `isAdmin` middleware |
+
+---
+
+## 📁 Project Structure
+
+```
+food-order-admin/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Sidebar.jsx
+│   │   ├── Topbar.jsx
+│   │   ├── ConfirmModal.jsx
+│   │   └── StatusBadge.jsx
+│   ├── pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── Orders.jsx
+│   │   ├── Users.jsx
+│   │   ├── Menu.jsx
+│   │   └── Settings.jsx
+│   ├── api/
+│   │   ├── orders.js
+│   │   ├── users.js
+│   │   └── menu.js
+│   ├── utils/
+│   │   └── auth.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js installed on your machine
-- MongoDB instance (local or Atlas)
+- Node.js v18+
+- MongoDB running locally or a MongoDB Atlas URI
+- The [Food Order App](https://github.com/your-username/food-order-app) backend running
 
-## License
-ISC
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/food-order-admin.git
+cd food-order-admin
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+VITE_ADMIN_SECRET=your_admin_secret_key
+```
+
+### 4. Start the dev server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 🔑 Admin Auth
+
+Admin login is protected by a role-based guard. On the backend, every admin route is wrapped with `isAdmin` middleware:
+
+```js
+// middleware/isAdmin.js
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    return next();
+  }
+  return res.status(403).json({ message: 'Access denied. Admins only.' });
+};
+```
+
+Admin-only API routes:
+```
+DELETE /api/admin/users/:id       → Delete a user
+DELETE /api/admin/orders/:id      → Delete any order
+GET    /api/admin/users           → Get all users
+GET    /api/admin/orders          → Get all orders
+PATCH  /api/admin/orders/:id      → Update order status
+```
+
+---
+
+## 📸 Screenshots
+
+> Coming soon — add screenshots of the Dashboard, Orders, and Users pages here.
+
+---
+
+## 🔗 Related Repos
+
+- 👉 [food-order-app](https://github.com/your-username/food-order-app) — The user-facing food ordering application
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙋‍♂️ Author
+
+Built by **[Your Name](https://github.com/your-username)**  
+Feel free to open issues or pull requests!
