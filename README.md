@@ -1,6 +1,6 @@
 # 🍽️ Food Order Admin Panel
 
-> Admin dashboard to manage the [Food Order App](https://github.com/your-username/food-order-app) — built for restaurant owners and administrators to oversee users, orders, and menu items in one place.
+> Admin dashboard to manage the [Food Order App](https://github.com/purvsakariya/Tasty-Bite) — built for restaurant owners and administrators to oversee users, orders, and menu items in one place.
 
 ---
 
@@ -103,12 +103,12 @@ food-order-admin/
 ### Prerequisites
 - Node.js v18+
 - MongoDB running locally or a MongoDB Atlas URI
-- The [Food Order App](https://github.com/your-username/food-order-app) backend running
+- The [Food Order App](https://github.com/purvsakariya/Tasty-Bite) backend running
 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/food-order-admin.git
+git clone https://github.com/purvsakariya/Admin-Testy-Bite
 cd food-order-admin
 ```
 
@@ -170,7 +170,7 @@ PATCH  /api/admin/orders/:id      → Update order status
 
 ## 🔗 Related Repos
 
-- 👉 [food-order-app](https://github.com/your-username/food-order-app) — The user-facing food ordering application
+- 👉 [food-order-app](https://github.com/purvsakariya/Tasty-Bite) — The user-facing food ordering application
 
 ---
 
@@ -182,5 +182,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 🙋‍♂️ Author
 
-Built by **[Your Name](https://github.com/your-username)**  
+Built by **[Purv Sakariya](https://github.com/purvsakariya)**  
 Feel free to open issues or pull requests!
