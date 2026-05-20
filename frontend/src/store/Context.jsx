@@ -4,6 +4,7 @@ import { API } from "../config/api";
 export const Context = createContext({
   availableMeals: null,
   user: null,
+  isLoad:0,
   users: null,
   orders: null,
   editMeal: (mealId) => { },
@@ -16,6 +17,7 @@ export function ContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [isLoad,setIsLoad] = useState(0)
 
   function deleteOrder(orderId) {
     try {
@@ -88,6 +90,11 @@ export function ContextProvider({ children }) {
       throw new Error(error?.message || "Failed to Fetched Available Meals");
     }
 
+  }, [isLoad]);
+  
+  useEffect(() => {
+
+  
     try {
       fetch(API.ORDERS)
         .then(res => res.json())
@@ -99,7 +106,7 @@ export function ContextProvider({ children }) {
     catch (error) {
       throw new Error(error?.message || "Failed to Fetched User Orders");
     }
-
+  
     try {
       fetch(API.USERS)
         .then(res => res.json())
@@ -110,10 +117,12 @@ export function ContextProvider({ children }) {
       throw new Error(error?.message || "Failed to Fetched Users");
     }
 
-  }, []);
+  },[])
 
   const cartContextValue = {
     availableMeals: availableMeals,
+    isLoad,
+    setIsLoad,
     orders,
     user,
     users,

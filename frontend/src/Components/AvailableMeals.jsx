@@ -14,7 +14,7 @@ function AvailableMeals() {
   const [search, setSearch] = useState("");
   const [meal, setMeal] = useState({})
 
-  const { availableMeals, addMeals, items, removeMeals } = useContext(Context);
+  const { availableMeals,setIsLoad, addMeals, items, removeMeals } = useContext(Context);
 
   const searchedItems = availableMeals.filter(meal => meal?.name.toLowerCase().includes(search?.toLowerCase()))
 
@@ -40,8 +40,8 @@ function AvailableMeals() {
     if (!response.ok) {
       console.log(response.json())
     } else {
-      location.reload();
-    }
+      setIsLoad(prev => prev + 1);
+    } 
 
     ShowEditModel();
   }
@@ -61,7 +61,7 @@ function AvailableMeals() {
     if (!response.ok) {
       console.log(res)
     } else {
-      location.reload();
+      setIsLoad(prev => prev + 1);
     }
 
     ShowAddModel();
@@ -82,11 +82,9 @@ function AvailableMeals() {
     if (!response.ok) {
       console.log(res)
     } else {
-      location.reload();
+      setIsLoad(prev => prev + 1);
     }
   }
-
-
 
   return <>
     <header className="availableHeader">
