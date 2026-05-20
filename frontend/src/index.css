@@ -35,6 +35,28 @@ body {
   border: 2px solid #ffc404;
 }
 
+#main-header nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#main-header nav ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+#main-header nav ul li .NavLink{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
 #main-header .btn {
   font-size: 2rem;
   font-family: 'Lato', sans-serif;
@@ -89,6 +111,46 @@ body {
 
 #main-header .userDetailsBtn .text-button:hover{
   background-color: #414040;
+}
+
+.dashBoard{
+  margin: 0 3rem;
+}
+
+.dashBoard ul{
+  margin: 1rem 0;
+  padding: 0;
+  display: flex;
+  justify-content: start; 
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.dashBoard ul li{
+  height: 7rem;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; 
+  background-color: #ffab04 ;
+  color: #29251B;
+  font-weight: bolder;
+  border-radius: 10px;
+  border: none;
+}
+
+.dashBoard ul li h3{
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.dashBoard ul li h4{
+  margin: 0;
+  padding: 0;
 }
 
 .userDetails{
@@ -248,7 +310,7 @@ h1 {
   color: #d9e2f1;
   border: none;
   outline: none;
-  padding: 0.6rem;
+  padding: 0.6rem 0.7rem;
   width: 40%;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
@@ -317,6 +379,12 @@ h1 {
 
   .orderHistory2 {
     grid-template-columns: repeat(1, minmax(10rem, 1fr));
+  }
+
+  .addItemCart{
+    /* margin: 0 1rem;
+    width: 100vw; */
+    border: 1px solid #3e0505;
   }
 
   h1{

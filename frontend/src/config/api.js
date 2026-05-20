@@ -13,8 +13,5 @@ export const API = {
 
   // Meals
   MEALS:`${BASE_URL}/orders/availableMeals`,
-
-  // Orders
-  PLACE_ORDER:`${BASE_URL}/orders/order`,
-  ORDER_HISTORY:`${BASE_URL}/orders/orderHistory`,
+  
 };

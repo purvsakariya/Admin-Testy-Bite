@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { API } from '../config/api.js'
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/Context.jsx";
-import AddItemBar from "./AddItemBar.jsx";
 import Button from "./Button.jsx";
 
 function AvailableMeals() {
@@ -17,7 +16,7 @@ function AvailableMeals() {
 
   return <>
     <div className="searchSection">
-      <input id="search" type="text" ref={searchRef} />
+      <input id="search" type="text" ref={searchRef} placeholder="Enter Meals Name For Search Them..." />
       {!search ?
         <img
           onClick={() => setSearch(searchRef.current.value)}
@@ -41,18 +40,12 @@ function AvailableMeals() {
             <p className="meal-item-price">{meal.price}</p>
             <p className="meal-item-description">{meal.description}</p>
             <div className="meal-item-button-section">
-              {meal.quantity !== 0 && <button onClick={() => removeMeals(meal.id)} className="button">-</button>}
-              {meal.quantity !== 0 && <p>{meal.quantity}</p>}
-              <button onClick={() => addMeals(meal)} className="button">{meal.quantity === 0 ? "Add To Card" : "+"}</button>
+              <button onClick={() => editMeals(meal)} className="button">Edit</button>
             </div>
           </li>
         )
       })}
-      {!Array.isArray(availableMeals) && <li className="meal-item">No meals available.</li>}
     </ul>
-    <div className="addItemCartDiv">
-      {items.length !== 0 && <AddItemBar />}
-    </div>
   </>
 }
 

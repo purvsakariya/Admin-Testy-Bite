@@ -32,10 +32,9 @@ function Login() {
             setError(res.message);
         } else {
             const token = res.accessToken || res.user?.accessToken;
-            // localStorage.setItem('accessToken', token);
             setUser({ ...res.user, accessToken: token });
             setSuccess(res.message)
-            navigate("/meals")
+            navigate("/dashBoard")
         }
     }
 
