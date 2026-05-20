@@ -1,55 +1,27 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { API } from '../config/api.js'
+import React, { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button.jsx';
+import Loader from './Loader.jsx';
+import { Context } from '../store/Context.jsx';
 
 function OrderHistory() {
-
     const navigate = useNavigate();
     const searchRef = useRef("");
-    const [orders, setOrders] = useState([])
     const [search, setSearch] = useState("");
+    const { orders, ordersLoading, deleteOrder } = useContext(Context);
 
-    let searchedUsers = orders.filter(user => user?.fullName.toLowerCase().includes(search?.toLowerCase()))
+    if (ordersLoading) {
+        return <Loader message="Fetching User Orders..." />;
+    }
 
-    useEffect(() => {
-        try {
-            fetch(API.ORDERS)
-                .then(res => res.json())
-                .then(data => {
-                    setOrders(data.orders)
-                })
-                .catch(err => { throw new Error(err?.message || "Failed to Fetched User Orders") })
-        }
-        catch (error) {
-            throw new Error(error?.message || "Failed to Fetched User Orders");
-        }
-
-    }, [])
+    const searchedUsers = orders.filter(user => user?.fullName.toLowerCase().includes(search?.toLowerCase()));
 
     function handleDelete(orderId) {
-        const result = confirm("Are You Sure of Order Deleting!")
-
+        const result = confirm("Are You Sure of Order Deleting!");
         if (!result) {
             return;
         }
-
-        try {
-            fetch(API.DELETEORDER, {
-                method: "POST",
-                body: JSON.stringify({ _id: orderId }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-                .then(res => res.json())
-                .then(data => console.log(data))
-                .catch(err => { throw new Error(err?.message || "Failed to Deleting Order") })
-
-            setOrders(prevUsers => prevUsers.filter(user => user._id !== orderId))
-        } catch (error) {
-            throw new Error(error?.message || "Failed to Fetched User Orders");
-        }
+        deleteOrder(orderId);
     }
 
     return (
@@ -70,12 +42,12 @@ function OrderHistory() {
                         alt="Search Logo" />
                 }
             </div>
-            {searchedUsers && <ul className='ordersHistory'>
+            {searchedUsers && searchedUsers.length > 0 && <ul className='ordersHistory'>
                 {searchedUsers?.map((user, index) => <ul key={user._id}>
                     <div className='userHistoryNum'>
                         <div className='orderHistoryNum'>
                             <h1>FullName: {user.fullName}</h1>
-                            <h1>Meals: {searchedUsers[index]?.items?.length}</h1>
+                            <h1>Meals: {user?.items?.length}</h1>
                         </div>
                         <p>Email: {user.email}</p>
                         <p>Address: {user.address}</p>
@@ -89,8 +61,8 @@ function OrderHistory() {
                             <div>
                                 <h3>{item.name}</h3>
                                 <div className='orderHistory-item-price'>
-                                    <p className="meal-item-price">Price: {item.price}</p>
-                                    {item.quantity !== 1 && <p className="meal-item-price">TotalPrice: {item.price * item.quantity}</p>}
+                                    <p className="meal-item-price">Price: ₹{item.price}</p>
+                                    {item.quantity !== 1 && <p className="meal-item-price">TotalPrice: ₹{item.price * item.quantity}</p>}
                                 </div>
                                 <p className="meal-item-description">{item.description}</p>
                                 <p>Quantity: {item.quantity}</p>
@@ -101,11 +73,11 @@ function OrderHistory() {
                 </ul>)}
             </ul>}
             {orders.length === 0 && <div className='ordersHistoryError'>
-                <h2>Please Order Something...</h2>
-                <Button onClick={() => navigate('/meals')}>Home</Button>
+                <h2>No orders placed yet.</h2>
+                <Button onClick={() => navigate('/')}>Home</Button>
             </div>}
         </>
-    )
+    );
 }
 
-export default OrderHistory
+export default OrderHistory;

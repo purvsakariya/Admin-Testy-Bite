@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/Context.jsx";
 import Button from "./Button.jsx";
 import Input from "./Input.jsx";
+import Loader from "./Loader.jsx";
 
 function AvailableMeals() {
 
@@ -14,7 +15,7 @@ function AvailableMeals() {
   const [search, setSearch] = useState("");
   const [meal, setMeal] = useState({})
 
-  const { availableMeals,setIsLoad, addMeals, items, removeMeals } = useContext(Context);
+  const { availableMeals, mealsLoading, setIsLoad } = useContext(Context);
 
   const searchedItems = availableMeals.filter(meal => meal?.name.toLowerCase().includes(search?.toLowerCase()))
 
@@ -84,6 +85,10 @@ function AvailableMeals() {
     } else {
       setIsLoad(prev => prev + 1);
     }
+  }
+
+  if (mealsLoading) {
+    return <Loader message="Fetching Menu Items..." />;
   }
 
   return <>

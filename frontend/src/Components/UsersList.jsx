@@ -5,12 +5,17 @@ import Button from './Button.jsx';
 import searchLogo from '../../public/svg/search.svg'
 import closeLogo from '../../public/svg/close.svg'
 import { Context } from '../store/Context.jsx';
+import Loader from './Loader.jsx';
 
 function UsersList() {
     const navigate = useNavigate();
     const searchRef = useRef("");
     const [search, setSearch] = useState("");
-    const { users, deleteUser } = useContext(Context);
+    const { users, deleteUser, usersLoading } = useContext(Context);
+
+    if (usersLoading) {
+        return <Loader message="Fetching Active Users..." />;
+    }
 
     const searchedUsers = users.filter(user => user?.username.toLowerCase().includes(search?.toLowerCase()))
 
@@ -46,8 +51,8 @@ function UsersList() {
             </ul>}
             {
                 users.length === 0 && <div className='ordersHistoryError'>
-                    <h2>Please Order Something...</h2>
-                    <Button onClick={() => navigate('/meals')}>Home</Button>
+                    <h2>No users registered yet.</h2>
+                    <Button onClick={() => navigate('/')}>Home</Button>
                 </div>
             }
         </>

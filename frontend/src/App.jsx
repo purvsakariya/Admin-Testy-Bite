@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ContextProvider } from "./store/Context.jsx";
 import { lazy, Suspense } from "react";
 import { ProtectedRoute, PublicRoute } from './Components/ProtectedRoute.jsx'
+import Loader from "./Components/Loader.jsx";
 
 // Import All Components Using Lazy Loading.
 const AvailableMeals = lazy(() => import('./Components/AvailableMeals'));
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (<PublicRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Loading Portal..." />}>
             <LogIn />
           </Suspense>
         </PublicRoute>)
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/dashBoard",
         element: (<ProtectedRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Loading Dashboard..." />}>
             <DashBoard />
           </Suspense>
         </ProtectedRoute>)
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: "/meals",
         element: (<ProtectedRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Loading Menu Management..." />}>
             <AvailableMeals />
           </Suspense>
         </ProtectedRoute>)
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/ordersList",
         element: (<ProtectedRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Loading Orders list..." />}>
             <OrdersList />
           </Suspense>
         </ProtectedRoute>)
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
       {
         path: "/usersList",
         element: (<ProtectedRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Loading Users list..." />}>
             <UsersList />
           </Suspense>
         </ProtectedRoute>)
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
       {
         path: "/changePass",
         element: (<ProtectedRoute>
-          <Suspense fallback={<p className="loading">Loading.....</p>}>
+          <Suspense fallback={<Loader message="Securing Connection..." />}>
             <ChangePass />
           </Suspense>
         </ProtectedRoute>)
