@@ -2,35 +2,42 @@ import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { API } from '../config/api.js'
 import { Context } from "../store/Context";
-// import Button from "./Button";
 
 function Header() {
   const navigate = useNavigate();
   const [showModel, setShowModel] = useState(false)
   const { user, setUser } = useContext(Context);
-  const token = user?.accessToken;
 
   function ShowModel() {
     setShowModel(prev => !prev);
   }
 
   async function handleLogout() {
-    const response = await fetch(API.LOGOUT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+
+    const token = localStorage?.getItem('token');
+
+    try {
+      const response = await fetch(API.LOGOUT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        }
+      });
+
+      const res = await response.json();
+
+      if (!response.ok) {
+        console.error(res?.message || 'Logout failed on server');
       }
-    });
-
-    const res = await response.json();
-
-    if (response.ok) {
-      setShowModel(false)
+    } catch (error) {
+      console.error('Error during logout:', error);
+    } finally {
+      setShowModel(false);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       setUser(null);
-      navigate("/login");
-    } else {
-      console.error(res?.message || 'Logout failed:');
+      navigate("/");
     }
   }
 
@@ -42,6 +49,16 @@ function Header() {
       </div>
       <nav>
         <ul>
+          <li>
+            <NavLink
+              to="/dashBoard"
+              style={({ isActive }) => ({
+                color: isActive ? "#ffab04" : "#f9dea7",
+                fontWeight: isActive ? "bold" : "normal"
+              })}
+              className='NavLink'
+            >DashBoard</NavLink>
+          </li>
           <li>
             <NavLink
               to="/usersList"
@@ -73,10 +90,10 @@ function Header() {
             >Menu</NavLink>
           </li>
         </ul>
-        {user && <button className="btn" onClick={ShowModel}>{user?.username[0].toUpperCase()}</button>}
+        {user && <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>}
         {showModel && <dialog className="userDetails" open>
           <div className="userPersonalDetails">
-            <button className="btn" onClick={ShowModel}>{user?.username[0].toUpperCase()}</button>
+            <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>
             <div>
               <p>{user?.username}</p>
               <p>{user?.email}</p>

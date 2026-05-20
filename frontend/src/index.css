@@ -303,6 +303,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
 
 #search{
@@ -337,6 +338,59 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(10rem, 1fr));
   gap: 1rem;
+}
+
+.availableHeader{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 0 5rem;
+}
+
+.dialog{
+  position: fixed;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffab04;
+  color: #29251B;
+  border: none;
+  border-radius: 20px;
+}
+
+.dialog form{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dialog form input{
+  background-color: #212121;
+  color: #ccc;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.dialog form textarea{
+  background-color: #212121;
+  width: 100%;
+  color: #ccc;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.dialog form p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 @media (min-width: 1400px) {

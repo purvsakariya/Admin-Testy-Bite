@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import {API} from '../config/api.js'
+import { API } from '../config/api.js'
 import Input from './Input';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
@@ -31,8 +31,10 @@ function Login() {
         if (!response.ok) {
             setError(res.message);
         } else {
-            const token = res.accessToken || res.user?.accessToken;
-            setUser({ ...res.user, accessToken: token });
+            const token = res.accessToken;
+            localStorage.setItem('token', token);       
+            localStorage.setItem('user', JSON.stringify(res.user));
+            setUser(res.user);
             setSuccess(res.message)
             navigate("/dashBoard")
         }

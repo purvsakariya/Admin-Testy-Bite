@@ -13,5 +13,8 @@ export const API = {
 
   // Meals
   MEALS:`${BASE_URL}/orders/availableMeals`,
+  EDITMEAL:`${BASE_URL}/orders/editMeal`,
+  ADDMEAL:`${BASE_URL}/orders/addMeal`,
+  DELETEMEAL:`${BASE_URL}/orders/deleteMeal`,
   
 };

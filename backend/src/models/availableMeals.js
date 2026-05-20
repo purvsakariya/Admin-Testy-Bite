@@ -1,10 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
 const availableMealsSchema = new Schema({
-    id: {
-        type: String,
-        required: true,
-    },
     name: {
         type: String,
         required: true,
@@ -23,7 +19,7 @@ const availableMealsSchema = new Schema({
     },
     quantity: {
         type: Number,
-        required: true,
+        default: 0
     },
 }, { timestamps: true })
 

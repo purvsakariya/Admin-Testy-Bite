@@ -1,0 +1,145 @@
+[
+    {
+        "name": "Gujarati Thali",
+        "price": 9,
+        "description": "Gujarati thali is a nice and big thali which is eat in Gujarat.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1779267253/home/meals/bepiyyhtkucynbe5fpgm.png",
+        "quantity": 0,
+        "updatedAt": "2026-05-20T08:54:14.711Z"
+    },
+    {
+        "name": "Paneer Tikka",
+        "price": 10.99,
+        "description": "Paneer tikka or Paneer Soola or Chhena Soola is an Indian dish made from chunks of paneer or chhena marinated in spices and grilled in a tandoor.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1779270395/home/meals/e5d5zwt2jyvgcoiyajac.png",
+        "quantity": 0,
+        "updatedAt": "2026-05-20T09:46:36.035Z"
+    },
+    {
+        "name": "Gujrati Thali",
+        "price": 16.99,
+        "description": "Gujarati thali is a nice and big thali which is eat in Gujarat.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1779273145/home/meals/fgeqm4c2v8rhjkihge30.png",
+        "quantity": 0,
+        "updatedAt": "2026-05-20T10:32:27.911Z"
+    },
+    {
+        "name": "Eggplant Parmesan",
+        "price": 11.99,
+        "description": "Layers of breaded eggplant, marinara sauce, and melted mozzarella and parmesan cheeses.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996851/meals/eggplant-parmesan.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Seafood Paella",
+        "price": 19.99,
+        "description": "A Spanish delicacy filled with saffron-infused rice, shrimp, mussels, and chorizo.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996844/meals/seafood-paella.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Grilled Chicken Sandwich",
+        "price": 10.99,
+        "description": "Tender grilled chicken breast with avocado, bacon, lettuce, and honey mustard on a toasted bun.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996839/meals/grilled-chicken-sandwich.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Steak Frites",
+        "price": 17.99,
+        "description": "Succulent steak cooked to your preference, served with crispy golden fries and herb butter.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996840/meals/steak-frites.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Beef Tacos",
+        "price": 9.99,
+        "description": "Three soft tortillas filled with seasoned beef, fresh salsa, cheese, and sour cream.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996847/meals/beef-tacos.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Mushroom Risotto",
+        "price": 13.99,
+        "description": "Creamy Arborio rice cooked with a medley of wild mushrooms and finished with parmesan.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996850/meals/mushroom-risotto.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Lemon Cheesecake",
+        "price": 6.99,
+        "description": "A creamy cheesecake with a tangy lemon flavor, served on a crumbly biscuit base.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996852/meals/lemon-cheesecake.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Mac & Cheese",
+        "price": 8.99,
+        "description": "Creamy cheddar cheese mixed with perfectly cooked macaroni, topped with crispy breadcrumbs. A classic comfort food.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996834/meals/mac--cheese.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Veggie Burger",
+        "price": 9.99,
+        "description": "A juicy veggie patty served on a whole grain bun with lettuce, tomato, and a tangy sauce.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996838/meals/veggie-burger.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Pancake Stack",
+        "price": 8.99,
+        "description": "Fluffy pancakes stacked high, drizzled with maple syrup and topped with fresh berries.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996845/meals/pancake-stack.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Chicken Curry",
+        "price": 13.99,
+        "description": "Tender pieces of chicken simmered in a rich and aromatic curry sauce, served with basmati rice.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996842/meals/chicken-curry.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Vegan Buddha Bowl",
+        "price": 11.99,
+        "description": "A hearty bowl filled with quinoa, roasted veggies, avocado, and a tahini dressing.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996843/meals/vegan-buddha-bowl.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Falafel Wrap",
+        "price": 8.99,
+        "description": "Crispy falafels wrapped in a warm pita with lettuce, tomatoes, and a tahini sauce.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996853/meals/falafel-wrap.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Sushi Roll Platter",
+        "price": 15.99,
+        "description": "An assortment of fresh sushi rolls including California, Spicy Tuna, and Eel Avocado.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996841/meals/sushi-roll-platter.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Lobster Bisque",
+        "price": 14.99,
+        "description": "A creamy soup made from lobster stock, aromatic vegetables, and a touch of brandy.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996849/meals/lobster-bisque.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Margherita Pizza",
+        "price": 12.99,
+        "description": "A classic pizza with fresh mozzarella, tomatoes, and basil on a thin and crispy crust.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996835/meals/margherita-pizza.jpg",
+        "quantity": 0
+    },
+    {
+        "name": "Miso Ramen",
+        "price": 12.99,
+        "description": "A warming bowl of ramen with miso broth, tender pork, soft-boiled egg, and green onions.",
+        "image": "https://res.cloudinary.com/dfypghcgt/image/upload/v1778996846/meals/miso-ramen.jpg",
+        "quantity": 0
+    }
+]

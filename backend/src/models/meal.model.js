@@ -2,12 +2,6 @@ import mongoose, { Schema } from 'mongoose'
 
 const availableMealSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
     name: {
       type: String,
       required: true,

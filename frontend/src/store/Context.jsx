@@ -62,6 +62,18 @@ export function ContextProvider({ children }) {
 
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+
+    if (token && userStr) {
+      try {
+        const userObj = JSON.parse(userStr);
+        setUser(userObj);
+      } catch (error) {
+        console.error("Failed to parse user data:", error);
+      }
+    }
+
     try {
       fetch(API.MEALS)
         .then((res) => res.json())
