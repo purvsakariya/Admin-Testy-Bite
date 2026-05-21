@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
 import { Order } from "../models/order.model.js";
+import jwt from 'jsonwebtoken'
 
 const options = {
     httpOnly: true,
@@ -37,69 +38,6 @@ export const users = async (req, res) => {
         return res.status(200).json({ message: 'Users Fetched SuccessFilly!', users })
     } catch (error) {
         return res.status(500).json({ message: 'Something Went Wrong While fetching Users!', error })
-    }
-}
-
-export const loginUser = async (req, res) => {
-    try {
-
-        const { email, password } = req?.body
-
-        if (!email || !password) {
-            return res.status(400).json({ message: 'All Felids Are Required' })
-        }
-
-        const userExisted = await User.findOne({ email: email.toLowerCase() });
-
-        if (!userExisted) {
-            return res.status(400).json({ message: 'User Was Not Existed' })
-        }
-
-        const passwordMatched = await userExisted.comparePass(password);
-
-        if (!passwordMatched) {
-            return res.status(401).json({ message: 'User password InValid' });
-        }
-
-        const { accessToken } = await generateAccessToken(userExisted._id, res)
-
-        return res
-            .status(200)
-            .cookie("accessToken", accessToken, options)
-            .json({
-                message: 'LoggedIn SuccessFully....',
-                accessToken,
-                user: {
-                    id: userExisted._id,
-                    username: userExisted.username,
-                    email: userExisted.email,
-                },
-            })
-
-    } catch (error) {
-        return res.status(500).json({ message: 'Something Went Wrong While LoggedIn User', error: error.message })
-    }
-}
-
-export const logoutUser = async (req, res) => {
-    try {
-        await User.findByIdAndUpdate(
-            req.user?._id,
-            {
-                $unset: { accessToken: 1 }
-            },
-            {
-                new: true
-            }
-        )
-
-        return res
-            .status(200)
-            .clearCookie("accessToken", options)
-            .json({ message: "User logged out successfully" })
-
-    } catch (error) {
-        return res.status(500).json({ message: 'Something Went Wong While User Logout!!!' })
     }
 }
 
@@ -141,7 +79,7 @@ export const deleteOrder = async (req, res) => {
         return res.status(400).json({ message: 'Order Not Found!' })
     }
 
-    return res.status(200).json( {message:'Order Deleted SuccessFully!',_id} )
+    return res.status(200).json({ message: 'Order Deleted SuccessFully!', _id })
 }
 
 export const deleteUser = async (req, res) => {
@@ -153,5 +91,5 @@ export const deleteUser = async (req, res) => {
         return res.status(400).json({ message: 'User Not Found!' })
     }
 
-    return res.status(200).json( {message:'User Deleted SuccessFully!',_id} )
+    return res.status(200).json({ message: 'User Deleted SuccessFully!', _id })
 }

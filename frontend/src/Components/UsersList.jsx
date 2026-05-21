@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { API } from '../config/api.js'
 import { useNavigate } from 'react-router-dom';
 import Button from './Button.jsx';
-import searchLogo from '../../public/svg/search.svg'
-import closeLogo from '../../public/svg/close.svg'
 import { Context } from '../store/Context.jsx';
 import Loader from './Loader.jsx';
 

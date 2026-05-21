@@ -4,9 +4,9 @@ import { Context } from "../store/Context";
 
 // Protects pages that need login (meals, cart, checkout, etc.)
 export function ProtectedRoute({ children }) {
-    const { user } = useContext(Context);
+    const token = localStorage?.getItem('token');
 
-    if (!user) {
+    if (!token) {
         return <Navigate to="/" replace />;
     }
 
@@ -15,9 +15,9 @@ export function ProtectedRoute({ children }) {
 
 // Prevents logged-in users from going back to login/signup
 export function PublicRoute({ children }) {
-    const { user } = useContext(Context);
+    const token = localStorage?.getItem('token');
 
-    if (user) {
+    if (token) {
         return <Navigate to="/dashBoard" replace />;
     }
 

@@ -4,7 +4,6 @@ import { API } from "../config/api";
 export const Context = createContext({
   availableMeals: null,
   mealsLoading: true,
-  user: null,
   isLoad:0,
   users: null,
   usersLoading: true,
@@ -18,7 +17,6 @@ export const Context = createContext({
 export function ContextProvider({ children }) {
   const [availableMeals, setAvailableMeals] = useState([]);
   const [mealsLoading, setMealsLoading] = useState(true);
-  const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [usersLoading, setUsersLoading] = useState(true);
   const [orders, setOrders] = useState([]);
@@ -71,16 +69,6 @@ export function ContextProvider({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const userStr = localStorage.getItem('user');
-
-    if (token && userStr) {
-      try {
-        const userObj = JSON.parse(userStr);
-        setUser(userObj);
-      } catch (error) {
-        console.error("Failed to parse user data:", error);
-      }
-    }
 
     setMealsLoading(true);
     try {
@@ -149,10 +137,8 @@ export function ContextProvider({ children }) {
     setIsLoad,
     orders,
     ordersLoading,
-    user,
     users,
     usersLoading,
-    setUser,
     deleteOrder,
     deleteUser
   };

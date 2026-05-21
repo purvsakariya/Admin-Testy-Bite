@@ -18,24 +18,17 @@ function Login() {
         const fd = new FormData(e.target);
         const { email, password } = Object.fromEntries(fd.entries())
 
-        const response = await fetch(API.LOGIN, {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        const emailMetched = email === import.meta.env.VITE_EMAIL_NAME
+        const passwordMetched = password === import.meta.env.VITE_EMAIL_PASSWORD
 
-        const res = await response.json()
-
-        if (!response.ok) {
-            setError(res.message);
+        if (!emailMetched) {
+            setError("Email InValid");
+        } else if(!passwordMetched) {
+            setError("Password InValid");
         } else {
-            const token = res.accessToken;
-            localStorage.setItem('token', token);       
-            localStorage.setItem('user', JSON.stringify(res.user));
-            setUser(res.user);
-            setSuccess(res.message)
+            const token = import.meta.env.VITE_ACCESS_TOKEN;
+            localStorage.setItem('token', token);
+            setSuccess("Login SuccessFully!")
             navigate("/dashBoard")
         }
     }

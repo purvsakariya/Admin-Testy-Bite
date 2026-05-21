@@ -6,8 +6,9 @@ import { Context } from "../store/Context";
 function Header() {
   const navigate = useNavigate();
   const [showModel, setShowModel] = useState(false)
-  const { user, setUser } = useContext(Context);
 
+  const token = localStorage?.getItem('token');
+  
   function ShowModel() {
     setShowModel(prev => !prev);
   }
@@ -16,29 +17,10 @@ function Header() {
 
     const token = localStorage?.getItem('token');
 
-    try {
-      const response = await fetch(API.LOGOUT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        }
-      });
+    setShowModel(false);
+    localStorage.removeItem('token');
+    navigate("/");
 
-      const res = await response.json();
-
-      if (!response.ok) {
-        console.error(res?.message || 'Logout failed on server');
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
-    } finally {
-      setShowModel(false);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      setUser(null);
-      navigate("/");
-    }
   }
 
   return (
@@ -48,7 +30,7 @@ function Header() {
         <h1>ReactFood</h1>
       </div>
       <nav>
-        {user && <><ul>
+        {token && <><ul>
           <li>
             <NavLink
               to="/dashBoard"
@@ -90,15 +72,15 @@ function Header() {
             >Menu</NavLink>
           </li>
         </ul>
-          <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>
+          <button className="btn" onClick={ShowModel}>P</button>
         </>
         }
         {showModel && <dialog className="userDetails" open>
           <div className="userPersonalDetails">
-            <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>
+            <button className="btn" onClick={ShowModel}>P</button>
             <div>
-              <p>{user?.username}</p>
-              <p>{user?.email}</p>
+              <p>Purv Sakariya</p>
+              <p>purv@gmail.com</p>
             </div>
           </div>
           <div className="userDetailsBtn">
