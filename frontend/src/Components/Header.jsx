@@ -48,7 +48,7 @@ function Header() {
         <h1>ReactFood</h1>
       </div>
       <nav>
-        <ul>
+        {user && <><ul>
           <li>
             <NavLink
               to="/dashBoard"
@@ -90,7 +90,9 @@ function Header() {
             >Menu</NavLink>
           </li>
         </ul>
-        {user && <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>}
+          <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>
+        </>
+        }
         {showModel && <dialog className="userDetails" open>
           <div className="userPersonalDetails">
             <button className="btn" onClick={ShowModel}>{user?.username?.[0]?.toUpperCase()}</button>

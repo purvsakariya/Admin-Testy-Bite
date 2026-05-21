@@ -69,6 +69,10 @@ function AvailableMeals() {
   }
 
   async function handleDeleteMeal(_id) {
+    const result = confirm("Are Sure to Delete a Meal")
+    if(!result){
+      return;
+    }
 
     const response = await fetch(API.DELETEMEAL, {
       method: "POST",

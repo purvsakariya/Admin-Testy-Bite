@@ -40,10 +40,6 @@ function Login() {
         }
     }
 
-    function handleSingin() {
-        navigate("/")
-    }
-
     return (
         <div className="singin">
             <header>
@@ -69,7 +65,6 @@ function Login() {
                 {error && <p className='error'>{error}</p>}
                 {success && <p className='success'>{success}</p>}
                 <p className='modal-actions'>
-                    <button type="button" className="text-button" onClick={handleSingin}>Sign In</button>
                     <Button type="submit">Log In</Button>
                 </p>
             </form>
