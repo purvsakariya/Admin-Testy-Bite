@@ -9,7 +9,7 @@ function UsersList() {
     const navigate = useNavigate();
     const searchRef = useRef("");
     const [search, setSearch] = useState("");
-    const { users, deleteUser, usersLoading } = useContext(Context);
+    const { users, deleteUser, usersLoading, orders } = useContext(Context);
 
     if (usersLoading) {
         return <Loader message="Fetching Active Users..." />;
@@ -36,16 +36,19 @@ function UsersList() {
                 }
             </div>
             {searchedUsers && <ul className='ordersHistory'>
-                {searchedUsers?.map((user, index) => <li key={user._id}>
-                    <div className='userHistoryNum'>
-                        <h1>FullName: {user.username}</h1>
-                        <p>Email: {user.email}</p>
-                        <p>Address: {user.address}</p>
-                        <p>City: {user.city}</p>
-                        <p>PinCode: {user.pinCode}</p>
-                        <button onClick={() => deleteUser(user._id)}>Delete</button>
-                    </div>
-                </li>)}
+                {searchedUsers?.map((user, index) => {
+                    const findUser = orders.filter(order => order.email === user.email);
+                    return <li key={user._id}>
+                        <div className='userHistoryNum'>
+                            <h1>FullName: {user.username}</h1>
+                            <p>Email: {user.email}</p>
+                            {findUser[0]?.address && <p>Address: {findUser[0].address}</p>}
+                            {findUser[0]?.city && <p>City: {findUser[0].city}</p>}
+                            {findUser[0]?.pincode && <p>Pincode: {findUser[0].pincode}</p>}
+                            <button onClick={() => deleteUser(user._id)}>Delete</button>
+                        </div>
+                    </li>
+                })}
             </ul>}
             {
                 users.length === 0 && <div className='ordersHistoryError'>

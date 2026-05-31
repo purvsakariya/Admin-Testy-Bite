@@ -125,7 +125,7 @@ function DashBoard() {
               <path d="M9 16l.01 0" />
               <path d="M13 16l2 0" />
             </svg>
-          </div>
+          </div>  
           <div className="stat-info">
             <span className="stat-label">Menu Items</span>
             <span className="stat-value">{totalMeals}</span>
